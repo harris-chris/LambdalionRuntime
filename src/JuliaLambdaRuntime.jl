@@ -1,6 +1,7 @@
 module JuliaLambdaRuntime
 
-using HTTP, JSON
+using JSON
+using HTTP
 include("function.jl")
 
 abstract type AWSError end
@@ -37,8 +38,8 @@ function process_reaction(reaction::AWSError, aws_request_id::String, endpoint::
   )
 end
 
-function start_runtime(host)
-  host = ARGS[1]
+function start_runtime(args)
+  host = args[1]
   endpoint = "http://$(host)/2018-06-01/runtime/invocation/"
 
   while true
