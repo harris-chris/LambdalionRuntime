@@ -1,4 +1,4 @@
-module LambdalionRuntime
+module JuliaLambdaRuntime
 
 using HTTP, JSON
 include("function.jl")
@@ -38,6 +38,7 @@ function process_reaction(reaction::AWSError, aws_request_id::String, endpoint::
 end
 
 function start_runtime(host)
+  host = ARGS[1]
   endpoint = "http://$(host)/2018-06-01/runtime/invocation/"
 
   while true
@@ -64,6 +65,10 @@ function start_runtime(host)
     reaction = react_to_invocation(invocation)
     process_reaction(reaction, invocation.aws_request_id, endpoint)
   end
+end
+
+if abspath(PROGRAM_FILE) == @__FILE__
+  start_runtime(ARGS)
 end
 
 end # module
