@@ -43,6 +43,7 @@ end
 function start_runtime(args)
   host = args[1]
   endpoint = "http://$(host)/2018-06-01/runtime/invocation/"
+  println("Starting runtime at $endpoint")
 
   while true
     http = HTTP.request("GET", "$(endpoint)next"; verbose=3)
