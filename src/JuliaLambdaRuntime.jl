@@ -41,7 +41,9 @@ function process_reaction(reaction::AWSError, aws_request_id::String, endpoint::
 end
 
 function start_runtime(args)
+  @show args
   host = args[1]
+  @show host
   endpoint = "http://$(host)/2018-06-01/runtime/invocation/"
   println("Starting runtime at $endpoint")
 
@@ -72,6 +74,7 @@ function start_runtime(args)
 end
 
 if abspath(PROGRAM_FILE) == @__FILE__
+  @show(ARGS)
   start_runtime(ARGS)
 end
 
