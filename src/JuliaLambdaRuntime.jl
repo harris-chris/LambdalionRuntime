@@ -4,6 +4,8 @@ using JSON
 using HTTP
 include("function.jl")
 
+export start_runtime
+
 abstract type AWSError end
 
 Base.@kwdef struct ProcessError <: AWSError
