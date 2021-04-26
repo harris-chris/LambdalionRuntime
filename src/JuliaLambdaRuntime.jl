@@ -74,7 +74,7 @@ function start_runtime(args)
 end
 
 if abspath(PROGRAM_FILE) == @__FILE__
-  @show(ARGS)
+  @show ARGS 
   start_runtime(ARGS)
 end
 
