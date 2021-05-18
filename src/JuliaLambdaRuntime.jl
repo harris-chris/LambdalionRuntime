@@ -2,7 +2,7 @@ module JuliaLambdaRuntime
 
 using JSON
 using HTTP
-include("function.jl")
+include(FUNC_PATH)
 
 export start_runtime
 
